@@ -1,0 +1,115 @@
+<?php require_once('../left/index.php'); ?>
+
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+               <?php
+
+        echo $name="后台管理员";
+               ?>
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">管理员</a></li>
+                <li class="am-active"><?php echo $name ?></li>
+            </ol>
+            <div class="tpl-portlet-components">
+
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <a href="./add.php"> <button type="button" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</button></a>
+                                    <!--<button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="am-u-sm-12 am-u-md-3">
+                            <form class="am-form am-form-horizontal" method="get" action="add.php">
+                            <div class="am-input-group am-input-group-sm">
+                                <input type="text" name="tel" class="am-form-field">
+                                <input type="hidden" name='sou' value="suo" >
+                                <input type="hidden" name='type' value="4" >
+                                <span class="am-input-group-btn">
+            <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
+          </span>
+                            </div>
+                                </form>
+                        </div>
+                    </div>
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-id">ID</th>
+                                            <th class="table-title">用户名</th>
+                                            <th class="table-type">电话</th>
+                                            <th class="table-date am-hide-sm-only">添加日期</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <?php
+                                     while($row = mysql_fetch_assoc($result)){
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><?php echo $row['username'] ?></td>
+                                            <td><?php echo $row['tel'] ?></td>
+                                            <td class="am-hide-sm-only"><?php echo date("Y-m-d H:i:s",$row['time']) ?></td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <a href="edit.php?id=<?php echo $row['id']  ?>"><span class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</span></a>
+                                                        <a href="edit.php?del=1&id=<?php echo $row['id']  ?>"><span class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</span></a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php  } ?>
+
+                                    </tbody>
+                                </table>
+                                <div class="am-cf">
+
+                                    <div class="am-fr">
+                                        <ul class="am-pagination tpl-pagination">
+                                           <?php echo $PageString; ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <script src="/admin/includes/js/jquery.min.js"></script>
+    <script src="/admin/includes/js/amazeui.min.js"></script>
+    <script src="/admin/includes/js/iscroll.js"></script>
+    <script src="/admin/includes/js/app.js"></script>
+</body>
+
+</html>

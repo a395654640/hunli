@@ -1,0 +1,131 @@
+<?php require_once('../left/index.php'); ?>
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+                婚礼大讲堂
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">婚礼大讲堂</a></li>
+                <li class="am-active">列表</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 婚礼大讲堂
+                    </div>
+
+
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-btn-toolbar">
+
+                            </div>
+                        </div>
+
+                        <div class="am-u-sm-12 am-u-md-3">
+                            <form class="am-form am-form-horizontal" method="get" action="edit.php">
+                            <div class="am-input-group am-input-group-sm">
+                                <input type="text" name="title" class="am-form-field">
+                                <input type="hidden" name='type' value="3" >
+                                <span class="am-input-group-btn">
+            <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
+          </span>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="am-g">
+                        <div class="tpl-table-images">
+                            <?php
+                            while($row=mysql_fetch_array($result)){
+                            ?>
+                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+                                <div class="tpl-table-images-content">
+                                    <div class="tpl-table-images-content-i-time">发布时间：<?php echo date("Y-m-d H:i:s",$row['time']) ?></div>
+                                    <div class="tpl-i-title">
+                                        <?php echo $row['title'] ?>
+                                    </div>
+                                    <a href="edit.php?type=1&id=<?php echo $row['id'] ?>" class="tpl-table-images-content-i">
+                                        <div class="tpl-table-images-content-i-info">
+                                            <span class="ico">
+                                        <?php
+                                        $mid=$row['uid'];
+                                        $sqlm="select * from member where id= $mid";
+                                        $resultm = mysql_query($sqlm);
+                                        $member=mysql_fetch_array($resultm);
+                                        ?>
+                                    <img src="<?php echo $member['img']; ?>" alt=""><?php echo $member['name']; ?>
+                                 </span>
+
+                                        </div>
+                                        <span class="tpl-table-images-content-i-shadow"></span>
+                                        <img src="<?php echo $row['img'] ?>" height="252" alt="">
+                                    </a>
+                                    <div class="tpl-table-images-content-block">
+                                        <div class="tpl-i-font">
+                                            <?php echo $row['content'] ?>
+                                        </div>
+                                        <div class="tpl-i-more">
+                                            <ul>
+                                                <li><span class="am-icon-heart am-text-warning"> <?php echo $row['like'] ?></span></li>
+                                                <li><span class="am-icon-edit am-text-success"><?php echo $row['comment'] ?></span></li>
+                                                <?php if($row['audit'] == 0){ ?>
+                                                <li><span class="am-icon-star-o am-text-success">未审核</span></li>
+                                                <?php }else{ ?>
+                                                <li><span class="am-icon-star am-text-success">已审核</span></li>
+                                                <?php } ?>
+                                            </ul>
+                                        </div>
+                                        <div class="am-btn-toolbar">
+                                            <a class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
+                                                <a href="edit.php?type=1&id=<?php echo $row['id'] ?>" ><button type="button" style="width:49.4%!important" class="am-btn am-btn-default am-btn-warning"><span class="am-icon-archive"></span> 审核</button></a>
+                                                <a href="edit.php?type=2&id=<?php echo $row['id'] ?>" ><button type="button" style="width:49.4%!important" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <?php } ?>
+                            <div class="am-u-lg-12">
+                                <div class="am-cf">
+
+                                    <div class="am-fr">
+                                        <ul class="am-pagination tpl-pagination">
+                                         <?php echo $PageString ?>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+<script src="/admin/includes/js/jquery.min.js"></script>
+<script src="/admin/includes/js/amazeui.min.js"></script>
+<script src="/admin/includes/js/iscroll.js"></script>
+<script src="/admin/includes/js/app.js"></script>
+</body>
+
+</html>

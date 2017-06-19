@@ -1,0 +1,88 @@
+<?php require_once('../left/index.php'); ?>
+
+
+
+
+<div class="tpl-content-wrapper">
+    <div class="tpl-content-page-title">
+        添加行业资讯分类
+    </div>
+    <ol class="am-breadcrumb">
+        <li><a href="#" class="am-icon-home">首页</a></li>
+        <li><a href="#">行业资讯</a></li>
+        <li class="am-active">添加分类</li>
+    </ol>
+    <div class="tpl-portlet-components">
+        <div class="portlet-title">
+            <div class="caption font-green bold">
+                <span class="am-icon-code"></span> 添加分类
+            </div>
+
+            <div class="tpl-block ">
+
+                <div class="am-g tpl-amazeui-form">
+
+
+                    <div class="am-u-sm-12 am-u-md-9">
+                        <form class="am-form am-form-horizontal" method="post" action="add.php?type=2">
+
+                            <div class="am-form-group">
+                                <label for="user-name" class="am-u-sm-3 am-form-label">上级分类</label>
+                                <div class="am-u-sm-9">
+                                <select id="doc-select-1" name="sid">
+                                    <?php
+                                     while($row = @mysql_fetch_assoc($resule)){
+                                    ?>
+
+                                    <option value="<?php echo $row['id'] ?>" <?php if(@$class['sid'] == $row['id'] ){echo "selected = 'selected'";}  ?> ><?php echo $row['name'] ?></option>
+
+                                    <?php } ?>
+                                </select>
+                                    </div>
+                                <span class="am-form-caret"></span>
+                            </div>
+
+                            <div class="am-form-group">
+                                <label for="user-name" class="am-u-sm-3 am-form-label">分类名称 / Name</label>
+                                <div class="am-u-sm-9">
+                                    <input type="text" id="user-name"  name="name"  value="<?php echo @$class['name'] ?>">
+
+                                </div>
+                            </div>
+
+
+                            <input type="hidden" name="id" value="<?php echo @$class['id']?>">
+
+                            <div class="am-form-group">
+                                <div class="am-u-sm-9 am-u-sm-push-3">
+                                    <button type="submit" class="am-btn am-btn-primary">添加分类</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+
+<script src="/admin/includes/js/jquery.min.js"></script>
+<script src="/admin/includes/js/amazeui.min.js"></script>
+<script src="/admin/includes/js/iscroll.js"></script>
+<script src="/admin/includes/js/app.js"></script>
+</body>
+
+</html>

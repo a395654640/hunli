@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/admin/includes/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/admin/includes/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/admin/includes/css/admin.css">
+    <link rel="stylesheet" href="/admin/includes/css/app.css">
+    <script src="/admin/includes/js/echarts.min.js"></script>
+</head>
+
+<body data-type="index">
+
+
+<header class="am-topbar am-topbar-inverse admin-header">
+    <div class="am-topbar-brand">
+        <a href="javascript:;" class="tpl-logo">
+            <img src="/admin/includes/img/logo.png" alt="">
+        </a>
+    </div>
+    <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+    </div>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+        <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+
+
+
+            <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+
+            <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
+
+                <ul class="am-dropdown-content">
+                    <li><a href="#"><span class="am-icon-bell-o"></span> 资料</a></li>
+                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                </ul>
+            </li>
+            <li><a href="../index.php" class="tpl-header-list-link"><span class="am-icon-sign-out tpl-header-list-ico-out-size"></span></a></li>
+        </ul>
+    </div>
+</header>
+
+
+
+
+
+
+
+<div class="tpl-page-container tpl-page-header-fixed">
+
+
+    <div class="tpl-left-nav tpl-left-nav-hover">
+        <div class="tpl-left-nav-title">
+            Amaze UI 列表
+        </div>
+        <div class="tpl-left-nav-list">
+            <ul class="tpl-left-nav-menu">
+                <li class="tpl-left-nav-item">
+                    <a href="/admin/index/index.php" class="nav-link active">
+                        <i class="am-icon-home"></i>
+                        <span>首页</span>
+                    </a>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="../icon/index.php?type=1" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-photo"></i>
+                        <span>APP端图标</span>
+                        <i class="tpl-left-nav-content tpl-badge-danger"></i>
+                    </a>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-users"></i>
+                        <span>会员</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="../member/index.php?type=all">
+                                <i class="am-icon-angle-right"></i>
+                                <span>全部会员</span>
+                                <i class="tpl-left-nav-content tpl-badge-primary"><?php echo $mcount['0'] ?></i>
+                            </a>
+                            <a href="../member/index.php?type=3">
+                                <i class="am-icon-angle-right"></i>
+                                <span>商家会员</span>
+                                <i class="tpl-left-nav-content tpl-badge-success"><?php echo $scount['0'] ?></i>
+                            </a>
+                            <a href="../member/index.php?type=2">
+                                <i class="am-icon-angle-right"></i>
+                                <span>个体会员</span>
+                                <i class="tpl-left-nav-content tpl-badge-success"><?php echo $tcount['0'] ?></i>
+                            </a>
+                            <a href="../member/index.php?type=1">
+                                <i class="am-icon-angle-right"></i>
+                                <span>个人会员</span>
+                                <i class="tpl-left-nav-content tpl-badge-success"><?php echo $rcount['0'] ?></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="../admin/index.php" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-user-md"></i>
+                        <span>管理员</span>
+                        <i class="tpl-left-nav-content tpl-badge-danger"></i>
+                    </a>
+                </li>
+
+
+
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-bullhorn"></i>
+                        <span>婚礼大讲堂</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="../dajiangtang/index.php?type=1">
+                                <i class="am-icon-angle-right"></i>
+                                <span>会员发布</span>
+                                <i class="tpl-left-nav-content tpl-badge-primary"></i>
+                            </a>
+                            <a href="../dajiangtang/index.php?type=2">
+                                <i class="am-icon-angle-right"></i>
+                                <span>行业发布</span>
+                                <i class="tpl-left-nav-content tpl-badge-success"></i>
+                            </a>
+                            <a href="../dajiangtang/index.php?type=2">
+                                <i class="am-icon-angle-right"></i>
+                                <span>banner</span>
+                                <i class="tpl-left-nav-content tpl-badge-success"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-bars"></i>
+                        <span>行业资讯</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="../info/class.php?type=1">
+                                <i class="am-icon-angle-right"></i>
+                                <span>分类</span>
+                                <i class="tpl-left-nav-content tpl-badge-primary"></i>
+                            </a>
+                            <a href="../info/index.php?type=1">
+                                <i class="am-icon-angle-right"></i>
+                                <span>课程</span>
+                                <i class="tpl-left-nav-content tpl-badge-primary"></i>
+                            </a>
+                            <a href="../info/index.php?type=2">
+                                <i class="am-icon-angle-right"></i>
+                                <span>人物</span>
+                                <i class="tpl-left-nav-content tpl-badge-success"></i>
+                            </a>
+                            <a href="../info/index.php?type=3">
+                                <i class="am-icon-angle-right"></i>
+                                <span>新闻</span>
+                                <i class="tpl-left-nav-content tpl-badge-success"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-share-alt"></i>
+                        <span>婚品共享</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="../share/class.php?type=1">
+                                <i class="am-icon-angle-right"></i>
+                                <span>分类</span>
+                                <i class="tpl-left-nav-content tpl-badge-primary"></i>
+                            </a>
+                            <a href="../share/index.php?type=1">
+                                <i class="am-icon-angle-right"></i>
+                                <span>婚品共享</span>
+                                <i class="tpl-left-nav-content tpl-badge-primary"></i>
+                            </a>
+
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-bars"></i>
+                        <span>需求发布</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="../release/class.php?type=1">
+                                <i class="am-icon-angle-right"></i>
+                                <span>分类</span>
+                                <i class="tpl-left-nav-content tpl-badge-primary"></i>
+                            </a>
+                            <a href="../release/index.php?type=1">
+                                <i class="am-icon-angle-right"></i>
+                                <span>会员</span>
+                                <i class="tpl-left-nav-content tpl-badge-primary"></i>
+                            </a>
+                            <a href="../release/index.php?type=2">
+                                <i class="am-icon-angle-right"></i>
+                                <span>行业</span>
+                                <i class="tpl-left-nav-content tpl-badge-success"></i>
+                            </a>
+
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
+
+
+
+
+
+                <li class="tpl-left-nav-item">
+                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-bar-chart"></i>
+                        <span>数据表</span>
+                        <i class="tpl-left-nav-content tpl-badge-danger">12</i>
+                    </a>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="chart.html" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-bar-chart"></i>
+                        <span>数据表</span>
+                        <i class="tpl-left-nav-content tpl-badge-danger">12</i>
+                    </a>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-table"></i>
+                        <span>表格</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu">
+                        <li>
+                            <a href="table-font-list.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>文字表格</span>
+                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                            </a>
+
+                            <a href="table-images-list.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>图片表格</span>
+                                <i class="tpl-left-nav-content tpl-badge-success">18</i>
+
+                                <a href="form-news.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>消息列表</span>
+                                    <i class="tpl-left-nav-content tpl-badge-primary">5</i>
+
+
+                                    <a href="form-news-list.html">
+                                        <i class="am-icon-angle-right"></i>
+                                        <span>文字列表</span>
+
+                                    </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="tpl-left-nav-item">
+                    <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                        <i class="am-icon-wpforms"></i>
+                        <span>表单</span>
+                        <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                    </a>
+                    <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                        <li>
+                            <a href="form-amazeui.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>Amaze UI 表单</span>
+                                <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                            </a>
+
+                            <a href="form-line.html">
+                                <i class="am-icon-angle-right"></i>
+                                <span>线条表单</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
